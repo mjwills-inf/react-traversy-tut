@@ -10,7 +10,8 @@ class Todos extends Component {
     // pass as prop (calling it todo) to todoItem the todo object from array (i.e. item from map)
     // set key from todo object property (from array via map)
     return this.props.todos.map((item) => (
-      <TodoItem key= { item.id } todo = { item } markComplete={ this.props.markComplete}/>
+      <TodoItem key= { item.id } todo = { item } markComplete={ this.props.markComplete }
+      delete= { this.props.markComplete }/>
     ))
   }
 };

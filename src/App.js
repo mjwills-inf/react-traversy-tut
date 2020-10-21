@@ -21,13 +21,13 @@ class App extends Component {
       {
         id: 3,
         title: 'Be peaceful',
-        completed: true
+        completed: false
       },
     ]
   }
 
   // setState method called on state -> .map returns new array of items to 'todos: ...'
-    // new array of compare id and if so change to opposite value = !
+    // new array of compare id and if so change to opposite value = ! (e.g. dummy logic)
   markComplete = (idArg) => {
     this.setState({ todos: this.state.todos.map(item => {
       if (item.id === idArg) {
@@ -36,6 +36,11 @@ class App extends Component {
       return item;
     }) })
   }
+  delete = (idArg) => {
+    this.setState({ todos: this.state.todos.filter(item => {
+      item.id !== idArg
+    }) });
+  }
 
   // render function JSK
   // props passed down to component
@@ -43,7 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={ this.markComplete }/>
+        <Todos todos={ this.state.todos } markComplete={ this.markComplete } delete={ this.delete }/>
       </div>
     );
   }
