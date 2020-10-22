@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Todos from './components/Todos'
+import Header from './layout/Header'
+import AddTodo from './components/AddTodo'
 
 import './App.css';
+
 
 
 class App extends Component {
@@ -37,9 +40,10 @@ class App extends Component {
     }) })
   }
   delete = (idArg) => {
-    this.setState({ todos: this.state.todos.filter(item => {
-      item.id !== idArg
-    }) });
+    this.setState({ todos: [...this.state.todos.filter(item => item.id !== idArg)] });
+  }
+  addNewTodo = (title) => {
+    console.log(title)
   }
 
   // render function JSK
@@ -48,7 +52,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todos todos={ this.state.todos } markComplete={ this.markComplete } delete={ this.delete }/>
+        <div className="container">
+          <Header />
+          <AddTodo submitTodo={this.addNewTodo} />
+          <Todos todos={ this.state.todos } markComplete={ this.markComplete } delete={ this.delete }/>
+        </div>
       </div>
     );
   }

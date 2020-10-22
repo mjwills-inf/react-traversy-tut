@@ -12,7 +12,15 @@ export class Todoitem extends Component {
     }
   }
 
-  
+  btnStyle = () => {
+    return {
+      padding: '3px 6px',
+      background: '#bbb',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '50%'
+    }
+  }
   
     render() {
     // destructing to assign variables for todo object properties (that we passed to Todoitem from Todo via props)
@@ -34,7 +42,8 @@ export class Todoitem extends Component {
           <input type="checkbox" onChange= { this.props.markComplete.bind(this, id) }/> 
           {' '} 
           { title }
-          <button style={ this.btnStyle } onClick= {this.props.delete.bind(this, id) }>x</button>
+          {' '}
+          <button style={ this.btnStyle() } onClick= { this.props.delete.bind(this, id) }>x</button>
         </p>
       </div>
     )
@@ -43,15 +52,6 @@ export class Todoitem extends Component {
 
 Todoitem.propTypes = {
   todo: PropTypes.object.isRequired
-}
-const btnStyle = () => {
-  return {
-    padding: '5px 10px',
-    background: '#ff0000',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '50%'
-  }
 }
 
 
