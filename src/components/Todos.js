@@ -17,9 +17,12 @@ class Todos extends Component {
 };
 
 // proptypes serve as vildation(?) check for props
-// the prop passed to Todos component is an array called todos 
+  // the prop passed to Todos component includes an array called todos
+  // the prop passed to Todos comp  includes a function called markComplete
 Todos.propTypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired
 }
 
 export default Todos;
